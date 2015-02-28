@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN" "http://www.tuckey.org/res/dtds/urlrewrite2.6.dtd">
+
+<urlrewrite>
+
+    <rule>
+        <note></note>
+        <from>^/search/usercore/(brief|detail|optimize)$</from>
+        <to>%{context-path}/searchusercore!$1.action</to>
+    </rule>
+
+    <rule>
+        <note></note>
+        <from>^/search/area/(suggest|hot)$</from>
+        <to>%{context-path}/searchusercore!$1.action</to>
+    </rule>
+
+    <rule>
+        <note></note>
+        <from>^/test/search/usercore/(adduser|deluser)$</from>
+        <to>%{context-path}/testsearchusercore!$1.action</to>
+    </rule>
+
+</urlrewrite>

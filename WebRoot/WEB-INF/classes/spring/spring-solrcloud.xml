@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+    http://www.springframework.org/schema/jee 
+    http://www.springframework.org/schema/jee/spring-jee-3.0.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
+	<bean id="solrPoolConfig" class="com.mele.cloud.pool.SolrPoolConfig">
+		<property name="maxActive" value="${solrcloud.pool.maxActive}" />
+		<property name="maxIdle" value="${solrcloud.pool.maxIdle}" />
+		<property name="maxWait" value="${solrcloud.pool.maxWait}" />
+		<property name="testOnBorrow" value="${solrcloud.pool.testOnBorrow}" />
+	</bean>
+
+	<bean id="cloudSolrZookeeperInfo" class="com.mele.cloud.pool.CloudSolrZookeeperInfo">
+		<constructor-arg index="0" value="${solrcloud.zookeeper.zkHosts}" name="zkHosts" />
+        <constructor-arg index="1" value="${solrcloud.zookeeper.zkDefaultCollection}" name="zkDefaultCollection" />
+        <constructor-arg index="2" value="${solrcloud.zookeeper.zkClientExpire}" name="zkClientExpire" />
+		<constructor-arg index="3" value="${solrcloud.zookeeper.zkConnectExpire}" name="zkConnectExpire" />
+	</bean>
+
+	<bean id="cloudSolrServerPool" class="com.mele.cloud.pool.CloudSolrServerPool">
+		<constructor-arg index="0" ref="jedisPoolConfig" />
+		<constructor-arg index="1" ref="cloudSolrZookeeperInfo" />
+	</bean>
+</beans>
+
+
+

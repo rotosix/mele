@@ -231,7 +231,7 @@ public class SearchService implements ISearchService {
     	Integer startLastTime = userCoreInfoQuery.getStartLastTime();
     	Integer endLastTime = userCoreInfoQuery.getEndLastTime();
         if ((startLastTime != null) || (endLastTime != null)) {
-        	fq.append("logintime:[");
+        	fq.append("lasttime:[");
 
         	if (startLastTime == null) {
         		fq.append("*").append(" TO ");

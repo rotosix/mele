@@ -97,6 +97,11 @@ public class UserCoreService {
 					coreInfo.put("avatar", avatar);
 				}
 
+				Integer type = userCoreInfo.getType();
+				if (type != null) {
+					coreInfo.put("type", type);
+				}
+
 				Integer level = userCoreInfo.getLevel();
 				if (level != null) {
 					coreInfo.put("level", level);
@@ -112,9 +117,14 @@ public class UserCoreService {
 					coreInfo.put("birthday", birthday);
 				}
 
+				String[] label = userCoreInfo.getLabel();
+				if ((label != null) && (label.length > 0)) {
+					coreInfo.put("label", label);
+				}
+
 				Integer logintime = userCoreInfo.getLasttime();
 				if (logintime != null) {
-					coreInfo.put("logintime", logintime);
+					coreInfo.put("lastime", logintime);
 				}
 
 				Integer registertime = userCoreInfo.getRegistertime();
